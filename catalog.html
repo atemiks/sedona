@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML Academy: Седона каталог</title>
+  <link rel="stylesheet" href="styles/styles.css">
+</head>
+
+<body>
+  <header class="header-box">
+    <div class="header-layout container">
+      <a class="header-logo" href="index.html">
+        <img class="logo" src="images/logo-sedona.svg" width="140" height="70" alt="Логотип сайта Седона">
+      </a>
+
+      <nav class="header-navigation">
+        <ul class="header-navigation-list list-unstyled">
+          <li class="header-navigation-item">
+            <a class="header-navigation-link" href="index.html">Главная</a>
+          </li>
+          <li class="header-navigation-item">
+            <a class="header-navigation-link" href="#">О Седоне</a>
+          </li>
+          <li class="header-navigation-item">
+            <a class="header-navigation-link is-current" href="catalog.html">Гостиницы</a>
+          </li>
+        </ul>
+
+        <ul class="header-navigation-list header-navigation-user list-unstyled">
+          <li class="header-navigation-item">
+            <button type="button" class="header-navigation-link">
+              <span class="visually-hidden">
+                Поиск
+              </span>
+              <svg class="hedaer-navigation-icon" width="20" height="20">
+                <use xlink:href="images/sprites/sprite-icons.svg#icon-search"></use>
+              </svg>
+            </button>
+          </li>
+
+          <li class="header-navigation-item">
+            <a class="header-navigation-link" href="#">
+              <span class="visually-hidden">
+                Избранное
+              </span>
+              <svg class="hedaer-navigation-icon" width="20" height="20">
+                <use xlink:href="images/sprites/sprite-icons.svg#icon-favourites"></use>
+              </svg>
+              <span class="header-navigation-badge badge">12</span>
+            </a>
+          </li>
+
+          <li class="header-navigation-item">
+            <!-- По нажатию открывается модальное окно бронирования -->
+            <button class="button" type="button">Хочу сюда!</button>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main-container main-inner">
+    <section class="section-catalog-intro bg-primary text-light">
+      <div class="container">
+        <header class="section-header">
+          <h1 class="section-title">Гостиницы Седоны</h1>
+
+          <ul class="breadcrumbs list-unstyled">
+            <li class="breadcrumbs-item">
+              <a class="breadcrumbs-link" href="index.html">
+                <span class="visually-hidden">Главная</span>
+                <svg class="breadcrumbs-icon" width="13" height="15">
+                  <use xlink:href="images/sprites/sprite-icons.svg#icon-home"></use>
+                </svg>
+              </a>
+            </li>
+
+            <li class="breadcrumbs-item">
+              <a class="breadcrumbs-link">Гостиницы</a>
+            </li>
+          </ul>
+        </header>
+
+        <form id="form-filter" class="form-filter" action="https://echo.htmlacademy.ru/" method="get">
+          <fieldset class="filter-group">
+            <legend class="filter-title title-h4">Инфраструктура:</legend>
+
+            <ul class="filter-options-list list-unstyled">
+              <li class="filter-option-item">
+                <label class="form-checkbox">
+                  <input class="form-checkbox-input" type="checkbox" name="swimming-pool" checked />
+                  <span class="form-checkbox-text">Бассейн</span>
+                </label>
+              </li>
+              <li class="filter-option-item">
+                <label class="form-checkbox">
+                  <input class="form-checkbox-input" type="checkbox" name="parking-space" checked />
+                  <span class="form-checkbox-text">Парковка</span>
+                </label>
+              </li>
+              <li class="filter-option-item">
+                <label class="form-checkbox">
+                  <input class="form-checkbox-input" type="checkbox" name="Wi-Fi" />
+                  <span class="form-checkbox-text">Wi-Fi</span>
+                </label>
+              </li>
+            </ul>
+          </fieldset>
+
+          <fieldset class="filter-group">
+            <legend class="filter-title title-h4">Тип жилья:</legend>
+
+            <ul class="filter-options-list list-unstyled">
+              <li class="filter-option-item">
+                <label class="form-radio">
+                  <input class="form-radio-input" type="radio" name="type-house" value="hotel" checked />
+                  <span class="form-radio-text">Гостиница</span>
+                </label>
+              </li>
+
+              <li class="filter-option-item">
+                <label class="form-radio">
+                  <input class="form-radio-input" type="radio" name="type-house" value="motel" />
+                  <span class="form-radio-text">Мотель</span>
+                </label>
+              </li>
+
+              <li class="filter-option-item">
+                <label class="form-radio">
+                  <input class="form-radio-input" type="radio" name="type-house" value="apartments" />
+                  <span class="form-radio-text">Апартаменты</span>
+                </label>
+              </li>
+            </ul>
+          </fieldset>
+
+          <fieldset class="filter-group">
+            <legend class="filter-title title-h4">Стоимость, ₽:</legend>
+
+            <div class="filter-range-block form-range-block">
+              <label class="form-range">
+                <span class="form-range-label">от</span>
+                <input class="form-range-input form-control" type="number" value="0" />
+              </label>
+
+              <label class="form-range">
+                <span class="form-range-label">до</span>
+                <input class="form-range-input form-control" type="number" value="9000" />
+              </label>
+
+              <div class="range-slider-block">
+                <input type="range" class="range-slider" name="price" value="0" min="0" max="12000" step="100"
+                  title="Цена от">
+                <input type="range" class="range-slider" name="price" value="9000" min="" max="12000" step="100"
+                  title="Цена до">
+              </div>
+            </div>
+          </fieldset>
+
+          <ul class="filter-actions-list list-unstyled">
+            <li class="filter-action-item">
+              <button class="filter-action button button-secondary" type="submit">
+                Применить
+              </button>
+            </li>
+
+            <li class="filter-action-item">
+              <button class="filter-action button button-transparent" type="reset">
+                Сбросить
+              </button>
+            </li>
+          </ul>
+        </form>
+      </div>
+    </section>
+
+    <section class="catalog-products">
+      <div class="container">
+        <h2 class="visually-hidden" hidden>Список товаров с фильтрами</h2>
+
+        <div class="catalog-settings">
+          <h2 class="catalog-settings-title">Найдено гостиниц: 38</h2>
+
+          <div class="catalog-sort">
+            <label class="form-select">
+              <span class="visually-hidden">Сортировать по</span>
+              <select name="catalog-sort" class="form-select-input" form="form-filter" aria-label="Сортировка">
+                <option value="cheap">Сначала дешёвые</option>
+                <option value="expensive">Сначала дорогие</option>
+                <option value="popular">Сначала популярные</option>
+              </select>
+            </label>
+          </div>
+
+          <ul class="catalog-views-list list-unstyled">
+            <li class="catalog-view-item">
+              <button type="button" class="catalog-view-button button button-outline is-active"
+                title="Показать карточки" tabindex="-1">
+                <span class="visually-hidden">Показать карточки</span>
+                <svg class="button-icon" width="20" height="20">
+                  <use xlink:href="images/sprites/sprite-icons.svg#icon-cards"></use>
+                </svg>
+              </button>
+            </li>
+
+            <li class="catalog-view-item">
+              <button type="button" class="catalog-view-button button button-outline" title="Показать блоки">
+                <span class="visually-hidden">Показать блоки</span>
+                <svg class="button-icon" width="20" height="20">
+                  <use xlink:href="images/sprites/sprite-icons.svg#icon-block"></use>
+                </svg>
+              </button>
+            </li>
+
+            <li class="catalog-view-item">
+              <button type="button" class="catalog-view-button button button-outline" title="Показать список">
+                <span class="visually-hidden">Показать список</span>
+                <svg class="button-icon" width="20" height="20">
+                  <use xlink:href="images/sprites/sprite-icons.svg#icon-list"></use>
+                </svg>
+              </button>
+            </li>
+          </ul>
+        </div>
+
+        <ul class="product-list list-unstyled">
+          <li class="product-item">
+            <div class="card-product">
+              <figure class="card-product-thumbnail">
+                <a href="#product" class="card-product-link">
+                  <img loading="lazy" src="images/hotels/hotel-1-amara.jpg" alt="Гостиница Amara Resort & Spa"
+                    width="300" height="212" class="card-product-media">
+                </a>
+              </figure>
+
+              <h3 class="card-product-title">
+                <a href="#product" class="card-product-link">Amara Resort & Spa</a>
+              </h3>
+
+              <ul class="card-product-summary list-unstyled">
+                <li>
+                  Гостиница
+                </li>
+                <li>
+                  От 4000&nbsp;₽
+                </li>
+              </ul>
+
+              <ul class="card-product-actions list-unstyled">
+                <li class="card-prodcut-action-item">
+                  <a href="#product" class="card-product-action button">Подробнее</a>
+                </li>
+
+                <li class="card-prodcut-action-item">
+                  <button type="button" class="card-product-action button button-secondary">В избранное</button>
+                </li>
+              </ul>
+
+              <div class="card-product-rating">
+                <span class="visually-hidden">4 звезды</span>
+
+                <ul class="card-product-stars list-unstyled">
+                  <li>
+                    <svg class="star icon-secondary" width="18" height="18">
+                      <use xlink:href="images/sprites/sprite-icons.svg#icon-star"></use>
+                    </svg>
+                  </li>
+                  <li>
+                    <svg class="star icon-secondary" width="18" height="18">
+                      <use xlink:href="images/sprites/sprite-icons.svg#icon-star"></use>
+                    </svg>
+                  </li>
+                  <li>
+                    <svg class="star icon-secondary" width="18" height="18">
+                      <use xlink:href="images/sprites/sprite-icons.svg#icon-star"></use>
+                    </svg>
+                  </li>
+                  <li>
+                    <svg class="star icon-secondary" width="18" height="18">
+                      <use xlink:href="images/sprites/sprite-icons.svg#icon-star"></use>
+                    </svg>
+                  </li>
+                </ul>
+
+                <span class="card-product-rate">Рейтинг: 8,5</span>
+              </div>
+            </div>
+          </li>
+
+          <li class="product-item">
+            <div class="card-product">
+              <figure class="card-product-thumbnail">
+                <a href="#product" class="card-product-link">
+                  <img loading="lazy" src="images/hotels/hotel-2-villas.jpg" alt="Гостиница Villas at Poco Diablo"
+                    width="300" height="212" class="card-product-media">
+                </a>
+              </figure>
+
+              <h3 class="card-product-title">
+                <a href="#product" class="card-product-link">Villas at Poco Diablo</a>
+              </h3>
+
+              <ul class="card-product-summary list-unstyled">
+                <li>
+                  Гостиница
+                </li>
+                <li>
+                  От 5000&nbsp;₽
+                </li>
+              </ul>
+
+              <ul class="card-product-actions list-unstyled">
+                <li class="card-prodcut-action-item">
+                  <a href="#product" class="card-product-action button">Подробнее</a>
+                </li>
+
+                <li class="card-prodcut-action-item">
+                  <button type="button" class="card-product-action button button-selected">В избранном</button>
+                </li>
+              </ul>
+
+              <div class="card-product-rating">
+                <span class="visually-hidden">4 звезды</span>
+
+                <ul class="card-product-stars list-unstyled">
+                  <li>
+                    <svg class="star icon-secondary" width="18" height="18">
+                      <use xlink:href="images/sprites/sprite-icons.svg#icon-star"></use>
+                    </svg>
+                  </li>
+                  <li>
+                    <svg class="star icon-secondary" width="18" height="18">
+                      <use xlink:href="images/sprites/sprite-icons.svg#icon-star"></use>
+                    </svg>
+                  </li>
+                  <li>
+                    <svg class="star icon-secondary" width="18" height="18">
+                      <use xlink:href="images/sprites/sprite-icons.svg#icon-star"></use>
+                    </svg>
+                  </li>
+                  <li>
+                    <svg class="star icon-secondary" width="18" height="18">
+                      <use xlink:href="images/sprites/sprite-icons.svg#icon-star"></use>
+                    </svg>
+                  </li>
+                </ul>
+
+                <span class="card-product-rate">Рейтинг: 9,2</span>
+              </div>
+            </div>
+          </li>
+
+          <li class="product-item">
+            <div class="card-product">
+              <figure class="card-product-thumbnail">
+                <a href="#product" class="card-product-link">
+                  <img loading="lazy" src="images/hotels/hotel-3-desert.jpg" alt="Гостиница Desert Quail Inn"
+                    width="300" height="212" class="card-product-media">
+                </a>
+              </figure>
+
+              <h3 class="card-product-title">
+                <a href="#product" class="card-product-link">Desert Quail Inn</a>
+              </h3>
+
+              <ul class="card-product-summary list-unstyled">
+                <li>
+                  Гостиница
+                </li>
+                <li>
+                  От 2500&nbsp;₽
+                </li>
+              </ul>
+
+              <ul class="card-product-actions list-unstyled">
+                <li class="card-prodcut-action-item">
+                  <a href="#product" class="card-product-action button">Подробнее</a>
+                </li>
+
+                <li class="card-prodcut-action-item">
+                  <button type="button" class="card-product-action button button-secondary">В избранное</button>
+                </li>
+              </ul>
+
+              <div class="card-product-rating">
+                <span class="visually-hidden">3 звезды</span>
+
+                <ul class="card-product-stars list-unstyled">
+                  <li>
+                    <svg class="star icon-secondary" width="18" height="18">
+                      <use xlink:href="images/sprites/sprite-icons.svg#icon-star"></use>
+                    </svg>
+                  </li>
+                  <li>
+                    <svg class="star icon-secondary" width="18" height="18">
+                      <use xlink:href="images/sprites/sprite-icons.svg#icon-star"></use>
+                    </svg>
+                  </li>
+                  <li>
+                    <svg class="star icon-secondary" width="18" height="18">
+                      <use xlink:href="images/sprites/sprite-icons.svg#icon-star"></use>
+                    </svg>
+                  </li>
+                </ul>
+
+                <span class="card-product-rate">Рейтинг: 6,9</span>
+              </div>
+            </div>
+          </li>
+
+          <li class="product-item">
+            <div class="card-product">
+              <figure class="card-product-thumbnail">
+                <a href="#product" class="card-product-link">
+                  <img loading="lazy" src="images/hotels/hotel-4-greentree.jpg" alt="Гостиница GreenTree Inn"
+                    width="300" height="212" class="card-product-media">
+                </a>
+              </figure>
+
+              <h3 class="card-product-title">
+                <a href="#product" class="card-product-link">GreenTree Inn</a>
+              </h3>
+
+              <ul class="card-product-summary list-unstyled">
+                <li>
+                  Гостиница
+                </li>
+                <li>
+                  От 1500&nbsp;₽
+                </li>
+              </ul>
+
+              <ul class="card-product-actions list-unstyled">
+                <li class="card-prodcut-action-item">
+                  <a href="#product" class="card-product-action button">Подробнее</a>
+                </li>
+
+                <li class="card-prodcut-action-item">
+                  <button type="button" class="card-product-action button button-secondary">В избранное</button>
+                </li>
+              </ul>
+
+              <div class="card-product-rating">
+                <span class="visually-hidden">2 звезды</span>
+
+                <ul class="card-product-stars list-unstyled">
+                  <li>
+                    <svg class="star icon-secondary" width="18" height="18">
+                      <use xlink:href="images/sprites/sprite-icons.svg#icon-star"></use>
+                    </svg>
+                  </li>
+                  <li>
+                    <svg class="star icon-secondary" width="18" height="18">
+                      <use xlink:href="images/sprites/sprite-icons.svg#icon-star"></use>
+                    </svg>
+                  </li>
+                </ul>
+
+                <span class="card-product-rate">Рейтинг: 5,0</span>
+              </div>
+            </div>
+          </li>
+        </ul>
+
+        <ul class="pagination list-unstyled">
+          <li class="pagination-item">
+            <a class="pagination-link pagination-current">1</a>
+          </li>
+          <li class="pagination-item">
+            <a class="pagination-link" href="#page2">2</a>
+          </li>
+          <li class="pagination-item">
+            <a class="pagination-link" href="#page3">3</a>
+          </li>
+          <li class="pagination-item">
+            <a class="pagination-link" href="#page4">4</a>
+          </li>
+          <li class="pagination-item">
+            ...
+          </li>
+          <li class="pagination-item">
+            <a class="pagination-link" href="#page10">10</a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section-mailing">
+      <header class="section-header">
+        <h2 class="visually-hidden">Подписка на рассылку</h2>
+        <p class="section-title title-h2">Подпишитесь на рассылку</p>
+        <p class="section-description">Только полезная информация и никакого спама, честное бойскаутское!</p>
+      </header>
+
+      <form class="form-mailing form-collapse" action="https://echo.htmlacademy.ru/" method="post">
+        <label class="visually-hidden" for="mailing-email">Email</label>
+        <input class="form-control form-control-large" placeholder="Ваш e-mail" type="email" name="mailing-email"
+          id="mailing-email" required>
+        <button class="button-submit button button-large button-secondary" type="submit">Подписаться</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="footer-box">
+    <div class="footer-layout container">
+      <ul class="footer-social-list list-unstyled">
+        <li class="footer-social-item">
+          <a class="footer-social-link" href="https://vk.com/htmlacademy" rel="noopener" target="_blank">
+            <span class="visually-hidden">
+              Вконтакте
+            </span>
+            <svg class="footer-social-icon icon-secondary" width="24" height="14">
+              <use xlink:href="images/sprites/sprite-socials.svg#icon-vk"></use>
+            </svg>
+          </a>
+        </li>
+
+        <li class="footer-social-item">
+          <a class="footer-social-link" href="https://t.me/htmlacademy" rel="noopener" target="_blank">
+            <span class="visually-hidden">
+              Телеграм
+            </span>
+            <svg class="footer-social-icon icon-secondary" width="18" height="16">
+              <use xlink:href="images/sprites/sprite-socials.svg#icon-telegram"></use>
+            </svg>
+          </a>
+        </li>
+
+        <li class="footer-social-item">
+          <a class="footer-social-link" href="https://www.youtube.com/user/htmlacademyru" rel="noopener"
+            target="_blank">
+            <span class="visually-hidden">
+              Ютуб
+            </span>
+            <svg class="footer-social-icon icon-secondary" width="22" height="17">
+              <use xlink:href="images/sprites/sprite-socials.svg#icon-youtube"></use>
+            </svg>
+          </a>
+        </li>
+      </ul>
+
+      <a class="footer-contact-phone" href="tel:+78128121212">+7 (812) 812-12-12</a>
+
+      <a class="footer-development-link" href="https://htmlacademy.ru" rel="noopener" target="_blank">
+        <span class="visually-hidden">HTML Academy</span>
+        <svg class="footer-development-logo" width="115" height="33">
+          <use xlink:href="images/sprites/sprite-academy.svg#logo-academy"></use>
+        </svg>
+      </a>
+    </div>
+  </footer>
+</body>
+
+</html>

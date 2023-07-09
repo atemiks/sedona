@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML Academy: Седона главная</title>
+  <link rel="stylesheet" href="styles/styles.css">
+</head>
+
+<body>
+  <header class="header-box">
+    <div class="header-layout container">
+      <a class="header-logo" href="index.html">
+        <img class="logo" src="images/logo-sedona.svg" width="140" height="70" alt="Логотип сайта Седона">
+      </a>
+
+      <nav class="header-navigation">
+        <ul class="header-navigation-list list-unstyled">
+          <li class="header-navigation-item">
+            <a class="header-navigation-link is-current">Главная</a>
+          </li>
+          <li class="header-navigation-item">
+            <a class="header-navigation-link" href="#">О Седоне</a>
+          </li>
+          <li class="header-navigation-item">
+            <a class="header-navigation-link" href="catalog.html">Гостиницы</a>
+          </li>
+        </ul>
+
+        <ul class="header-navigation-list header-navigation-user list-unstyled">
+          <li class="header-navigation-item">
+            <button type="button" class="header-navigation-link">
+              <span class="visually-hidden">
+                Поиск
+              </span>
+              <svg class="hedaer-navigation-icon" width="20" height="20">
+                <use xlink:href="images/sprites/sprite-icons.svg#icon-search"></use>
+              </svg>
+            </button>
+          </li>
+
+          <li class="header-navigation-item">
+            <a class="header-navigation-link" href="#">
+              <span class="visually-hidden">
+                Избранное
+              </span>
+              <svg class="hedaer-navigation-icon" width="20" height="20">
+                <use xlink:href="images/sprites/sprite-icons.svg#icon-favourites"></use>
+              </svg>
+              <span class="header-navigation-badge badge">12</span>
+            </a>
+          </li>
+
+          <li class="header-navigation-item">
+            <!-- По нажатию открывается модальное окно бронирования -->
+            <button class="button" type="button">Хочу сюда!</button>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main-container main-index">
+    <div class="main-index-container">
+      <h1 class="visually-hidden">Город Седона</h1>
+      <img class="welcome" src="images/welcome.svg" width="458" height="352" alt="Добро пожаловать в Седону.">
+    </div>
+
+    <section class="section-advantages">
+      <header class="section-header">
+        <h2 class="visually-hidden">Преимущества</h2>
+        <p class="section-title title-h2">Седона — небольшой городок в Аризоне,
+          заслуживающий большего!</p>
+        <p class="section-description">Рассмотрим причины, по которым Седона круче, чем Гранд-Каньон!</p>
+      </header>
+
+      <ul class="advantages-list list-unstyled">
+        <li class="advantages-item card-tile card-tile-stripe bg-primary text-light">
+          <h3 class="card-tile-title text-uppercase ">Настоящий <br> городок</h3>
+          <p class="card-tile-description">Седона — не аттракцион для туристов, там течёт своя жизнь</p>
+        </li>
+
+        <li class="advantages-item column-by-2">
+          <picture class="advantages-item-picture">
+            <img loading="lazy" class="advantages-item-image" src="images/advantage/town.jpg" width="800" height="385"
+              alt="Вид на город">
+          </picture>
+        </li>
+
+        <li class="advantages-item card-tile card-tile-stripe bg-secondary">
+          <h3 class="card-tile-title text-uppercase">Небольшая <br> площадь</h3>
+          <p class="card-tile-description">Все достопримечательности находятся очень близко</p>
+        </li>
+
+        <li class="advantages-item card-tile card-tile-stripe bg-tertiary">
+          <h3 class="card-tile-title text-uppercase">Красивая <br> дорога</h3>
+          <p class="card-tile-description">Ехать в Седону из Лас-Вегаса совсем не скучно!</p>
+        </li>
+
+        <li class="advantages-item card-tile card-tile-stripe bg-secondary">
+          <h3 class="card-tile-title text-uppercase ">Мало <br> туристов</h3>
+          <p class="card-tile-description">Большинство едет в Гранд Каньон и толпится там</p>
+        </li>
+
+        <li class="advantages-item column-by-2">
+          <picture class="advantages-item-picture">
+            <img loading="lazy" class="advantages-item-image" src="images/advantage/bridge.jpg" width="800" height="385"
+              alt="Вид на мост">
+          </picture>
+        </li>
+
+        <li class="advantages-item card-tile card-tile-stripe bg-primary text-light">
+          <h3 class="card-tile-title text-uppercase">Там есть <br> Мост дьявода</h3>
+          <p class="card-tile-description">Да, по нему можно пройти! Если вы осмелитесь, разумеется</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="section-recommendations">
+      <header class="section-header">
+        <h2 class="visually-hidden">Рекомендации</h2>
+        <p class="section-title title-h2">Приезжайте в&nbsp;Седону отдохнуть в&nbsp;комфорте и уюте!</p>
+        <p class="section-description">Опытный персонал и качественное обслуживание!</p>
+      </header>
+
+      <ul class="recommendations-list list-unstyled">
+        <li class="recommendations-item card-tile">
+          <picture class="card-tile-thumbnail">
+            <img loading="lazy" src="images/recommendations/icon-house.svg" alt="Жильё" width="75" height="72"
+              class="card-tile-media">
+          </picture>
+          <h3 class="card-tile-title text-uppercase">Жильё</h3>
+          <p class="card-tile-description">Рекомендуем пожить в&nbsp;настоящем мотеле, <br>
+            всё как в&nbsp;кино!</p>
+        </li>
+
+        <li class="recommendations-item card-tile">
+          <picture class="card-tile-thumbnail">
+            <img loading="lazy" src="images/recommendations/icon-food.svg" alt="Еда" width="75" height="72"
+              class="card-tile-media">
+          </picture>
+          <h3 class="card-tile-title text-uppercase">Еда</h3>
+          <p class="card-tile-description">Всегда заказывайте <br>
+            топовый фирменный бургер, <br> вы не разочаруетесь!</p>
+        </li>
+
+        <li class="recommendations-item card-tile">
+          <picture class="card-tile-thumbnail">
+            <img loading="lazy" src="images/recommendations/icon-souvenir.svg" alt="Сувенир" width="75" height="72"
+              class="card-tile-media">
+          </picture>
+          <h3 class="card-tile-title text-uppercase">Сувениры</h3>
+          <p class="card-tile-description">Не только китайского,
+            <br> но и&nbsp;настоящего местного производства!
+          </p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="section-hotel-search">
+      <header class="section-header">
+        <h2 class="visually-hidden">Поиск гостиницы</h2>
+        <p class="section-title title-h2">Заинтересовались?</p>
+        <p class="section-description">Укажите предполагаемые даты поездки, <br> и мы покажем вам лучшие предложения
+          гостиниц в Седоне</p>
+      </header>
+
+      <!-- Открытие модального окна поиска гостинец -->
+      <button type="button" class="button button-large">Поиск гостиницы в Седоне</button>
+    </section>
+
+    <section class="section-mailing section-mailing-with-background bg-primary text-light">
+      <header class="section-header">
+        <h2 class="visually-hidden">Подписка на рассылку</h2>
+        <p class="section-title title-h2">Подпишитесь на рассылку</p>
+        <p class="section-description">Только полезная информация и никакого спама, честное бойскаутское!</p>
+      </header>
+
+      <form class="form-mailing form-collapse" action="https://echo.htmlacademy.ru/" method="post">
+        <label class="visually-hidden" for="mailing-email">Email</label>
+        <input class="form-control form-control-large" placeholder="Ваш e-mail" type="email" name="mailing-email"
+          id="mailing-email" required>
+        <button class="button-submit button button-large button-secondary" type="submit">Подписаться</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="footer-box">
+    <div class="footer-layout container">
+      <ul class="footer-social-list list-unstyled">
+        <li class="footer-social-item">
+          <a class="footer-social-link" href="https://vk.com/htmlacademy" rel="noopener" target="_blank">
+            <span class="visually-hidden">
+              Вконтакте
+            </span>
+            <svg class="footer-social-icon icon-secondary" width="24" height="14">
+              <use xlink:href="images/sprites/sprite-socials.svg#icon-vk"></use>
+            </svg>
+          </a>
+        </li>
+
+        <li class="footer-social-item">
+          <a class="footer-social-link" href="https://t.me/htmlacademy" rel="noopener" target="_blank">
+            <span class="visually-hidden">
+              Телеграм
+            </span>
+            <svg class="footer-social-icon icon-secondary" width="18" height="16">
+              <use xlink:href="images/sprites/sprite-socials.svg#icon-telegram"></use>
+            </svg>
+          </a>
+        </li>
+
+        <li class="footer-social-item">
+          <a class="footer-social-link" href="https://www.youtube.com/user/htmlacademyru" rel="noopener"
+            target="_blank">
+            <span class="visually-hidden">
+              Ютуб
+            </span>
+            <svg class="footer-social-icon icon-secondary" width="22" height="17">
+              <use xlink:href="images/sprites/sprite-socials.svg#icon-youtube"></use>
+            </svg>
+          </a>
+        </li>
+      </ul>
+
+      <a class="footer-contact-phone" href="tel:+78128121212">+7 (812) 812-12-12</a>
+
+      <a class="footer-development-link" href="https://htmlacademy.ru" rel="noopener" target="_blank">
+        <span class="visually-hidden">HTML Academy</span>
+        <svg class="footer-development-logo" width="115" height="33">
+          <use xlink:href="images/sprites/sprite-academy.svg#logo-academy"></use>
+        </svg>
+      </a>
+    </div>
+  </footer>
+</body>
+
+</html>
