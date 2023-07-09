@@ -1,9 +1,14 @@
 /* Общие переменные */
 :root {
   --c-default: #000;
+  --c-default-opacity-60: rgba(0, 0, 0, 0.3);
+  --c-default-opacity-30: rgba(0, 0, 0, 0.3);
   --c-secondary: #333;
   --c-light: #fff;
+  --c-light-opacity-30: rgba(255, 255, 255, 0.3);
   --c-danger: #ff5757;
+  --c-outline-default: #83b3d3;
+  --outline-shadow: 0 0 0 3px var(--c-outline-default);
 
   /* Ссылка */
   --c-link-default: #000000;
@@ -12,12 +17,27 @@
 
   /* Кнопки */
   --c-btn-primary: #756157;
+  --c-btn-primary-hover: #615048;
+  --c-btn-primary-press: #756157;
+
   --c-btn-secondary: #82b3d3;
+  --c-btn-secondary-hover: #68a2ca;
+  --c-btn-secondary-press: #82b3d3;
+
   --c-btn-selected: #7db54f;
-  --c-btn-light: #e5e5e5;
+  --c-btn-selected-hover: #6c9e42;
+  --c-btn-selected-press: #7db54f;
+
   --c-btn-outline: #e5e5e5;
   --c-btn-outline-hover: #000;
   --c-btn-outline-focus: #68a2ca;
+
+  --c-btn-light: #f2f2f2;
+
+  --c-btn-close: #e5e5e5;
+  --c-btn-close-hover: #e6e6e6;
+
+  --c-btn-disabled: #e5e5e5;
 
   /* Иконки */
   --c-icon-default: #000;
@@ -35,6 +55,7 @@
 
   /* Формы */
   --c-form-default: #f2f2f2;
+  --c-form-default-hover: #e6e6e6;
   --c-form-primary: #3f5e72;
   --c-form-secondary: #e5e5e5;
   --c-border-default: #e6e6e6;
@@ -148,17 +169,17 @@ h6,
 }
 
 /* Ссылки */
-a {
+a:not(.button) {
   outline: none;
   color: var(--c-link-default);
 }
 
-a:hover,
-a:focus {
+a:not(.button):hover,
+a:not(.button):focus {
   color: var(--c-link-default-hover);
 }
 
-a:active {
+a:not(.button):active {
   opacity: 0.3;
 }
 
@@ -254,6 +275,7 @@ a:active {
 }
 
 .form-control {
+  outline: none;
   box-sizing: border-box;
   height: 48px;
   padding: 0 20px;
@@ -263,6 +285,19 @@ a:active {
   font-size: 18px;
   font-weight: 700;
   line-height: 24px;
+}
+
+.form-control:hover,
+.form-control:focus {
+  background-color: var(--c-form-default-hover);
+}
+
+.form-control:focus {
+  box-shadow: var(--outline-shadow);
+}
+
+.form-control::placeholder {
+  color: var(--c-default-opacity-60);
 }
 
 /* Скрываем стандартные кнопки вверх/вниз */
@@ -288,6 +323,10 @@ a:active {
   gap: 16px;
 }
 
+.form-checkbox:hover {
+  opacity: 0.6;
+}
+
 .form-checkbox-input {
   cursor: pointer;
   position: relative;
@@ -303,6 +342,19 @@ a:active {
   background: var(--c-form-default);
 }
 
+.form-checkbox-input:focus {
+  outline: none;
+  box-shadow: var(--outline-shadow);
+}
+
+.form-checkbox-input:active,
+.form-checkbox-input:disabled,
+.form-checkbox-input:active + .form-checkbox-text,
+.form-checkbox-input:disabled + .form-checkbox-text {
+  opacity: 0.3;
+  box-shadow: none;
+}
+
 .form-checkbox-input::after {
   opacity: 0;
   position: absolute;
@@ -316,9 +368,11 @@ a:active {
   background-size: contain;
   content: "";
 }
+
 .form-checkbox-input:checked::after {
   opacity: 1;
 }
+
 .form-checkbox-text {
   align-self: center;
 }
@@ -326,9 +380,14 @@ a:active {
 /* Радиокнопка */
 .form-radio {
   cursor: pointer;
+  outline: none;
   position: relative;
   display: inline-flex;
   gap: 16px;
+}
+
+.form-radio:hover {
+  opacity: 0.6;
 }
 
 .form-radio-input {
@@ -344,6 +403,20 @@ a:active {
   border: none;
   border-radius: 50%;
   background: var(--c-form-default);
+  color: var(--c-form-primary);
+}
+
+.form-radio-input:focus {
+  outline: none;
+  box-shadow: var(--outline-shadow);
+}
+
+.form-radio-input:active,
+.form-radio-input:disabled,
+.form-radio-input:active + .form-radio-text,
+.form-radio-input:disabled + .form-radio-text {
+  opacity: 0.3;
+  box-shadow: none;
 }
 
 .form-radio-input::after {
@@ -357,7 +430,7 @@ a:active {
   height: 50%;
   margin: auto;
   border-radius: 50%;
-  background-color: var(--c-default);
+  background-color: currentColor;
   content: "";
 }
 
@@ -389,6 +462,12 @@ a:active {
   line-height: 21px;
 }
 
+.form-select-input:hover,
+.form-select-input:focus {
+  outline: none;
+  border-color: var(--c-outline-default);
+}
+
 .form-select-input:disabled {
 }
 
@@ -399,10 +478,11 @@ button {
 
 .button {
   box-sizing: border-box;
+  outline: none;
   cursor: pointer;
   display: inline-block;
-  padding: 6px 34px;
-  border: 2px solid var(--c-btn-primary);
+  padding: 8px 34px;
+  border: none;
   border-radius: var(--r-default);
   background-color: var(--c-btn-primary);
   color: var(--c-light);
@@ -415,44 +495,75 @@ button {
   text-transform: uppercase;
 }
 
+.button:hover,
+.button:focus {
+  background-color: var(--c-btn-primary-hover);
+}
+
+.button:active {
+  background-color: var(--c-btn-primary-press);
+  color: var(--c-light-opacity-30);
+}
+
+.button:disabled,
+.button:hover:disabled,
+.button:focus:disabled,
+.button:active:disabled {
+  background-color: var(--c-btn-disabled);
+  color: var(--c-light);
+}
+
 .button-secondary {
-  border-color: var(--c-btn-secondary);
   background-color: var(--c-btn-secondary);
   color: var(--c-light);
 }
 
+.button-secondary:hover,
+.button-secondary:focus {
+  background-color: var(--c-btn-secondary-hover);
+}
+
+.button-secondary:active {
+  background-color: var(--c-btn-secondary-press);
+}
+
 .button-selected {
-  border-color: var(--c-btn-selected);
   background-color: var(--c-btn-selected);
 }
 
-.button-light {
-  background-color: var(--c-btn-light);
+.button-selected:hover,
+.button-selected:focus {
+  background-color: var(--c-btn-selected-hover);
 }
 
-.button-outline {
-  border-color: var(--c-btn-outline);
+.button-selected:active {
+  background-color: var(--c-btn-selected-press);
+}
+
+.button-transparent,
+.button-transparent:hover,
+.button-transparent:focus,
+.button-transparent:active,
+.button-transparent:disabled {
   background-color: transparent;
-  color: var(--c-default);
-}
-
-.button-outline:hover,
-.button-outline:active,
-.button-outline.is-active {
-  border-color: var(--c-btn-outline-hover);
-}
-
-.button-outline:focus {
-  border-color: var(--c-btn-outline-focus);
-}
-
-.button-transparent {
-  border-color: transparent;
-  background: none;
   color: currentColor;
 }
 
-.button-small {
+.button-transparent:hover {
+  opacity: 0.6;
+}
+
+.button-transparent:focus {
+  box-shadow: inset var(--outline-shadow);
+}
+
+.button-transparent:active {
+  opacity: 0.3;
+  box-shadow: none;
+}
+
+.button-transparent:disabled {
+  opacity: 0.1;
 }
 
 .button-large {
@@ -480,6 +591,21 @@ button {
   height: 52px;
   border: none;
   border-radius: 50%;
+  background-color: var(--c-btn-close);
+}
+
+.button-close:hover,
+.button-close:focus {
+  background-color: var(--c-btn-close-hover);
+}
+
+.button-close:focus {
+  box-shadow: var(--outline-shadow);
+}
+
+.button-close:active {
+  box-shadow: none;
+  color: var(--c-default-opacity-30);
 }
 
 .button-tooltip {
@@ -493,6 +619,10 @@ button {
   padding: 0;
   border: none;
   border-radius: 50%;
+  background-image: url("../images/icons/icon-info-light.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 20px;
 }
 
 .button-tooltip::before,
@@ -579,15 +709,20 @@ button {
   padding: 0;
   border: none;
   border-radius: var(--r-default);
-  background: none;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 20px;
 }
 
-.counter-button:nth-of-type(1) {
+.counter-button-decrease {
   left: 0;
+  background-image: url("../images/icons/icon-minus.svg");
 }
 
-.counter-button:nth-of-type(2) {
+.counter-button-increase {
   right: 0;
+  background-image: url("../images/icons/icon-plus.svg");
 }
 
 /*
@@ -633,22 +768,22 @@ button {
   content: "";
 }
 
-.breadcrumbs-link {
+.breadcrumbs .breadcrumbs-link {
   color: currentColor;
 }
 
-.breadcrumbs-link:hover,
-.breadcrumbs-link:focus,
-.breadcrumbs-link:active {
+.breadcrumbs .breadcrumbs-link:hover,
+.breadcrumbs .breadcrumbs-link:focus,
+.breadcrumbs .breadcrumbs-link:active {
   color: currentColor;
 }
 
-.breadcrumbs-link:hover,
-.breadcrumbs-link:focus {
+.breadcrumbs .breadcrumbs-link:hover,
+.breadcrumbs .breadcrumbs-link:focus {
   opacity: 0.6;
 }
 
-.breadcrumbs-link:active {
+.breadcrumbs .breadcrumbs-link:active {
   opacity: 0.3;
 }
 
@@ -713,7 +848,7 @@ button {
 
 /* Изменяем цвет черточки, если карточка темная */
 .card-tile-stripe.bg-primary .card-tile-title::after {
-  background-color: var(--c-bg-default-opacity-30);
+  background-color: var(--c-light-opacity-30);
 }
 
 /* Шапка */
@@ -966,6 +1101,7 @@ button {
 
 .form-mailing .form-control {
   flex-grow: 1;
+  width: 100%;
 }
 
 /* Каталог */
@@ -1087,6 +1223,10 @@ button {
   width: calc(100% - var(--range-thumb-size));
 }
 
+.range-slider:focus {
+  outline: none;
+}
+
 /* Первый слайдер выравниваем по левой стороне */
 .range-slider:first-child {
   left: 0;
@@ -1119,6 +1259,10 @@ button {
   background: var(--c-bg-default);
 }
 
+.range-slider:focus::-webkit-slider-thumb {
+  box-shadow: var(--outline-shadow);
+}
+
 /* Стилизация рычажка для firefox  */
 .range-slider::-moz-range-thumb {
   cursor: pointer;
@@ -1130,6 +1274,10 @@ button {
   border: none;
   border-radius: var(--r-default);
   background: var(--c-bg-default);
+}
+
+.range-slider:focus::-moz-range-thumb {
+  box-shadow: var(--outline-shadow);
 }
 
 .filter-actions-list {
@@ -1172,12 +1320,28 @@ button {
 }
 
 .catalog-view-button {
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 48px;
   height: 48px;
   padding: 0;
+  border: 2px solid var(--c-btn-outline);
+  border-radius: var(--r-default);
+  background-color: transparent;
+  color: var(--c-default);
+}
+
+.catalog-view-button:hover,
+.catalog-view-button:active,
+.catalog-view-button:focus:active,
+.catalog-view-button.is-active {
+  border-color: var(--c-btn-outline-hover);
+}
+
+.catalog-view-button:focus {
+  border-color: var(--c-btn-outline-focus);
 }
 
 /* Каталог товаров */
@@ -1380,10 +1544,7 @@ button {
   align-items: center;
   justify-content: center;
   border-radius: var(--r-default);
-  background-color: var(--c-icon-secondary);
   padding: 5px;
-  color: var(--c-light);
-  text-decoration: none;
 }
 
 .pagination-link.pagination-current {
@@ -1509,6 +1670,7 @@ button {
   align-items: center;
   min-height: 48px;
   margin-right: 8px;
+  vertical-align: super;
 }
 
 .form-reservation .form-control {

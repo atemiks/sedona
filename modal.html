@@ -204,10 +204,13 @@
     <div class="modal-dialog">
       <div class="modal-header">
         <h2 class="modal-title">Поиск гостиницы в Седоне</h2>
-        <button type="button" class="button-close button-light" title="Закрыть">
+        <button type="button" class="button-close" title="Закрыть">
           <span class="visually-hidden">Закрыть</span>
-          <svg class="button-icon" width="16" height="16">
-            <use xlink:href="images/sprites/sprite-icons.svg#icon-close"></use>
+          <svg xmlns="http://www.w3.org/2000/svg" class="button-icon" width="15" height="14" viewBox="0 0 15 14"
+            fill="none">
+            <path
+              d="M14.3929 1.29234L13.1006 3.05176e-05L7.39294 5.70772L1.68525 3.05176e-05L0.392944 1.29234L6.10064 7.00003L0.392944 12.7077L1.68525 14L7.39294 8.29234L13.1006 14L14.3929 12.7077L8.68525 7.00003L14.3929 1.29234Z"
+              fill="currentColor" />
           </svg>
         </button>
       </div>
@@ -221,7 +224,7 @@
 
             <div class="form-column">
               <input type="text" name="date-arrival" id="date-arrival" class="form-control" value="27 апреля 2020"
-                required>
+                placeholder="Укажите дату" required>
               <span class="form-hint text-small text-error">Мы не можем отправить вас в прошлое.</span>
             </div>
           </div>
@@ -233,7 +236,7 @@
 
             <div class="form-column">
               <input type="text" name="date-departure" id="date-departure" class="form-control" value="1 сентября 2023"
-                required>
+                placeholder="Укажите дату" required>
               <span class="form-hint text-small">На эти даты есть свободные номера. Пока есть.</span>
             </div>
           </div>
@@ -246,17 +249,11 @@
             <div class="counter">
               <button type="button" class="counter-button counter-button-decrease" title="Уменьшить">
                 <span class="visually-hidden">Уменьшить</span>
-                <svg class="counter-button-icon" width="20" height="20">
-                  <use xlink:href="images/sprites/sprite-icons.svg#icon-minus"></use>
-                </svg>
               </button>
               <input type="number" id="number-of-adults" name="number-of-adults" class="counter-control form-control"
                 value="2">
               <button type="button" class="counter-button counter-button-increase" title="Увеличить">
                 <span class="visually-hidden">Увеличить</span>
-                <svg class="counter-button-icon" width="20" height="20">
-                  <use xlink:href="images/sprites/sprite-icons.svg#icon-plus"></use>
-                </svg>
               </button>
             </div>
           </div>
@@ -268,26 +265,17 @@
                 data-tooltip="Укажите количество детей, которые будут с вами, возраст которых от 6 до 18 лет. Дети до 6 лет размещаются бесплатно.">
                 <span class="visually-hidden">Укажите количество детей, которые будут с вами, возраст которых от 6 до 18
                   лет. Дети до 6 лет размещаются бесплатно.</span>
-                <svg class="button-icon" width="20" height="20">
-                  <use xlink:href="images/sprites/sprite-icons.svg#icon-info"></use>
-                </svg>
               </button>
             </div>
 
             <div class="counter">
               <button type="button" class="counter-button counter-button-decrease" title="Уменьшить">
                 <span class="visually-hidden">Уменьшить</span>
-                <svg class="counter-button-icon" width="20" height="20">
-                  <use xlink:href="images/sprites/sprite-icons.svg#icon-minus"></use>
-                </svg>
               </button>
               <input type="number" id="number-of-children" name="number-of-children"
                 class="counter-control form-control" value="2">
               <button type="button" class="counter-button counter-button-increase" title="Увеличить">
                 <span class="visually-hidden">Увеличить</span>
-                <svg class="counter-button-icon" width="20" height="20">
-                  <use xlink:href="images/sprites/sprite-icons.svg#icon-plus"></use>
-                </svg>
               </button>
             </div>
           </div>
