@@ -46,6 +46,7 @@
 
   /* Радиус */
   --r-default: 4px;
+  --r-large: 10px;
   --r-badge: 50px;
   --r-tooltip: 10px;
   --r-modal: 30px;
@@ -243,6 +244,15 @@ a:active {
 }
 
 /* Контроллеры формы */
+.form-label {
+  text-transform: capitalize;
+}
+
+.form-hint {
+  display: inline-block;
+  margin: 4px 0 0 20px;
+}
+
 .form-control {
   box-sizing: border-box;
   height: 48px;
@@ -408,23 +418,22 @@ button {
 .button-secondary {
   border-color: var(--c-btn-secondary);
   background-color: var(--c-btn-secondary);
+  color: var(--c-light);
 }
 
 .button-selected {
   border-color: var(--c-btn-selected);
-  background: var(--c-btn-selected);
+  background-color: var(--c-btn-selected);
+}
+
+.button-light {
+  background-color: var(--c-btn-light);
 }
 
 .button-outline {
   border-color: var(--c-btn-outline);
   background-color: transparent;
   color: var(--c-default);
-}
-
-.button-transparent {
-  border-color: transparent;
-  background: none;
-  color: currentColor;
 }
 
 .button-outline:hover,
@@ -437,12 +446,26 @@ button {
   border-color: var(--c-btn-outline-focus);
 }
 
+.button-transparent {
+  border-color: transparent;
+  background: none;
+  color: currentColor;
+}
+
 .button-small {
 }
 
 .button-large {
   padding-left: 50px;
   padding-right: 50px;
+  font-size: 20px;
+  line-height: 36px;
+  text-transform: uppercase;
+}
+
+.button-extra-large {
+  padding: 10px 50px;
+  border-radius: var(--r-large);
   font-size: 20px;
   line-height: 36px;
   text-transform: uppercase;
@@ -457,7 +480,6 @@ button {
   height: 52px;
   border: none;
   border-radius: 50%;
-  background-color: var(--c-btn-light);
 }
 
 .button-tooltip {
@@ -484,26 +506,26 @@ button {
   content: "";
 }
 
-.button-tooltip::after {
-  top: calc(100% + 10px);
-  width: 16px;
-  height: 16px;
-  transform: translateX(-50%) rotate(45deg);
-}
-
 .button-tooltip::before {
   box-sizing: border-box;
   top: calc(100% + 16px);
   width: 255px;
   transform: translateX(-50%);
-  padding: 15px 20px;
+  padding: 22px 20px;
   border-radius: var(--r-tooltip);
   box-shadow: 0px 15px 30px 0px rgba(0, 0, 0, 0.3);
   color: var(--c-light);
-  font-size: 16px;
+  font-size: 15px;
   line-height: 20px;
   text-align: left;
   content: attr(data-tooltip);
+}
+
+.button-tooltip::after {
+  top: calc(100% + 10px);
+  width: 16px;
+  height: 16px;
+  transform: translateX(-50%) rotate(45deg);
 }
 
 .button-tooltip:hover::before,
@@ -1417,12 +1439,25 @@ button {
 
 .modal-dialog {
   box-sizing: border-box;
-  max-width: 580px;
+  width: 100%;
+  max-width: 718px;
   margin: auto;
   padding: 64px 70px;
   border-radius: var(--r-modal);
   background-color: var(--c-bg-default);
   box-shadow: 0px 25px 50px 0px rgba(0, 0, 0, 0.15);
+}
+
+.modal-header {
+  position: relative;
+  margin: 0 0 64px;
+  padding: 0 60px 0 0;
+}
+
+.modal-header .button-close {
+  position: absolute;
+  top: 0;
+  right: -18px;
 }
 
 .modal-title {
@@ -1435,12 +1470,20 @@ button {
   gap: 24px;
 }
 
+.form-reservation button[type="submit"] {
+  margin-top: 22px;
+}
+
 .form-reservation .form-group {
   display: flex;
 }
 
+.form-reservation .form-group-children {
+  justify-content: flex-end;
+}
+
 .form-reservation .form-group-with-hint {
-  min-height: 70px;
+  min-height: 73px;
 }
 
 .form-reservation .form-column {
@@ -1448,18 +1491,19 @@ button {
 }
 
 .form-reservation .form-label-column {
-  flex: 0 0 120px;
+  flex: 0 0 136px;
 }
 
 .form-reservation .form-label-column .form-label {
   display: inline-flex;
   align-items: center;
   min-height: 48px;
-  vertical-align: super;
+  margin-right: 8px;
 }
 
 .form-reservation .form-control {
   flex-grow: 1;
+  width: 100%;
 }
 
 /* Дата заезда, выезда, кнопка отправить по ширине в 2 колонки */
