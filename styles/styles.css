@@ -785,6 +785,16 @@ button {
   color: var(--c-default);
 }
 
+.header-navigation-link:hover,
+.header-navigation-link:focus {
+  color: var(--c-link-default-hover);
+}
+
+.header-navigation-link:active {
+  opacity: 0.3;
+  color: var(--c-link-default-hover);
+}
+
 /* Активная ссылка навигации */
 .header-navigation-link.is-current {
   border-bottom-color: var(--c-btn-primary);
@@ -1385,7 +1395,7 @@ button {
  * Футер
  */
 .footer-box {
-  padding: 46px 0 30px;
+  padding: 48px 0 34px;
 }
 
 .footer-layout {
