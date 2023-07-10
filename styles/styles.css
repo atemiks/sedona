@@ -324,7 +324,7 @@ body {
 
 /* Скрываем стандартные кнопки вверх/вниз в firefox */
 .form-control[type="number"] {
-  -moz-appearance: textfield;
+  appearance: textfield;
 }
 
 /* Начертание текста 400 у большого поля */
@@ -360,7 +360,6 @@ body {
   position: relative;
   display: block;
   -webkit-appearance: none;
-  -moz-appearance: none;
   appearance: none;
   width: 20px;
   height: 20px;
@@ -425,7 +424,6 @@ body {
   position: relative;
   display: block;
   -webkit-appearance: none;
-  -moz-appearance: none;
   appearance: none;
   width: 20px;
   height: 20px;
@@ -478,7 +476,6 @@ body {
 .form-select-input {
   cursor: pointer;
   position: relative;
-  -moz-appearance: none;
   -webkit-appearance: none;
   appearance: none;
   width: 100%;
