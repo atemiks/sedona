@@ -379,7 +379,9 @@ a:active {
   border: 0;
 }
 
-/* Контроллеры формы */
+/*
+  Контроллеры формы
+*/
 .form-label {
   text-transform: capitalize;
 }
@@ -415,6 +417,23 @@ a:active {
   color: var(--c-default-opacity-60);
 }
 
+/* Скрываем стандартные кнопки вверх/вниз в вебкит */
+.form-control::-webkit-outer-spin-button,
+.form-control::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Скрываем стандартные кнопки вверх/вниз в firefox */
+.form-control[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* Начертание текста 400 у большого поля */
+.form-control-large {
+  font-weight: 400;
+}
+
 /* Поле с календарем */
 .form-control-date {
   padding-right: 60px;
@@ -424,22 +443,9 @@ a:active {
   background-size: 20px;
 }
 
-/* Скрываем стандартные кнопки вверх/вниз */
-.form-control::-webkit-outer-spin-button,
-.form-control::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-.form-control[type="number"] {
-  -moz-appearance: textfield;
-}
-
-.form-control-large {
-  font-weight: 400;
-}
-
-/* Чекбокс */
+/*
+  Чекбокс
+*/
 .form-checkbox {
   cursor: pointer;
   position: relative;
@@ -501,7 +507,9 @@ a:active {
   align-self: center;
 }
 
-/* Радиокнопка */
+/*
+  Радиокнопка
+*/
 .form-radio {
   cursor: pointer;
   outline: none;
@@ -566,7 +574,9 @@ a:active {
   align-self: center;
 }
 
-/* Выпадающий список */
+/*
+  Выпадающий список
+*/
 .form-select-input {
   cursor: pointer;
   position: relative;
@@ -599,7 +609,140 @@ a:active {
   color: var(--c-dark);
 }
 
-/* Кнопки */
+/*
+  Слайдер диапазона
+*/
+.form-range-block {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 44px 2px;
+}
+
+.form-range {
+  position: relative;
+}
+
+.form-range-input {
+  position: relative;
+  flex-grow: 1;
+  width: 100%;
+}
+
+.form-range:nth-of-type(1) .form-range-input {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.form-range:nth-of-type(2) .form-range-input {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-range-label {
+  opacity: 0.3;
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  color: var(--c-default);
+}
+
+/* Оберстка для слайдера диапазона */
+.range-slider-block {
+  grid-column: span 2;
+  position: relative;
+  height: var(--range-height);
+  background: var(--c-bg-default-opacity-30);
+}
+
+/* Выбранный диапазон */
+.range-slider-block::before {
+  pointer-events: none;
+  position: absolute;
+  height: var(--range-height);
+  left: var(--range-left-offset);
+  right: var(--range-right-offset);
+  width: unset;
+  background-color: var(--c-bg-default);
+  content: "";
+}
+
+/* Сдайдер диапазона */
+.range-slider {
+  pointer-events: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  position: absolute;
+  z-index: 0;
+  height: var(--range-height);
+  margin: 0;
+  background: none;
+  /* Убираем наложение ползунков друг на друга в начальной/конечной точке  */
+  width: calc(100% - var(--range-thumb-size));
+}
+
+.range-slider:focus {
+  outline: none;
+}
+
+/* Первый слайдер выравниваем по левой стороне */
+.range-slider:first-child {
+  left: 0;
+}
+
+/* Второй слайдер выравниваем по правой стороне */
+.range-slider:last-child {
+  right: 0;
+}
+
+/* Стилизация ползунка для webkit и firefox */
+.range-slider::-webkit-slider-runnable-track,
+.range-slider::-moz-range-track {
+  -webkit-appearance: none;
+  appearance: none;
+  height: var(--range-height);
+  background: none;
+}
+
+/* Стилизация рычажка для webkit */
+.range-slider::-webkit-slider-thumb {
+  cursor: pointer;
+  pointer-events: all;
+  -webkit-appearance: none;
+  appearance: none;
+  width: var(--range-thumb-size);
+  height: var(--range-thumb-size);
+  border: none;
+  border-radius: var(--r-default);
+  background: var(--c-bg-default);
+}
+
+.range-slider:focus::-webkit-slider-thumb {
+  box-shadow: var(--outline-shadow);
+}
+
+/* Стилизация рычажка для firefox  */
+.range-slider::-moz-range-thumb {
+  cursor: pointer;
+  pointer-events: all;
+  -webkit-appearance: none;
+  appearance: none;
+  width: var(--range-thumb-size);
+  height: var(--range-thumb-size);
+  border: none;
+  border-radius: var(--r-default);
+  background: var(--c-bg-default);
+}
+
+.range-slider:focus::-moz-range-thumb {
+  box-shadow: var(--outline-shadow);
+}
+
+/*
+  Кнопки
+*/
 button {
   outline: none;
 }
@@ -1221,137 +1364,9 @@ button {
   display: inline-flex;
 }
 
-/* Ограничение ширины диапазона цены */
+/* Ограничение ширины диапазона цены в фильтре */
 .filter-range-block {
   max-width: 290px;
-}
-
-.form-range-block {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 44px 2px;
-}
-
-.form-range {
-  position: relative;
-}
-
-.form-range-input {
-  position: relative;
-  flex-grow: 1;
-  width: 100%;
-}
-
-.form-range:nth-of-type(1) .form-range-input {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-}
-
-.form-range:nth-of-type(2) .form-range-input {
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-}
-
-.form-range-label {
-  opacity: 0.3;
-  position: absolute;
-  z-index: 1;
-  top: 50%;
-  right: 20px;
-  transform: translateY(-50%);
-  color: var(--c-default);
-}
-
-/* Оберстка для слайдера диапазона */
-.range-slider-block {
-  grid-column: span 2;
-  position: relative;
-  height: var(--range-height);
-  background: var(--c-bg-default-opacity-30);
-}
-
-/* Выбранный диапазон */
-.range-slider-block::before {
-  pointer-events: none;
-  position: absolute;
-  height: var(--range-height);
-  left: var(--range-left-offset);
-  right: var(--range-right-offset);
-  width: unset;
-  background-color: var(--c-bg-default);
-  content: "";
-}
-
-/* Сдайдер диапазона */
-.range-slider {
-  pointer-events: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  position: absolute;
-  z-index: 0;
-  height: var(--range-height);
-  margin: 0;
-  background: none;
-  /* Убираем наложение ползунков друг на друга в начальной/конечной точке  */
-  width: calc(100% - var(--range-thumb-size));
-}
-
-.range-slider:focus {
-  outline: none;
-}
-
-/* Первый слайдер выравниваем по левой стороне */
-.range-slider:first-child {
-  left: 0;
-}
-
-/* Второй слайдер выравниваем по правой стороне */
-.range-slider:last-child {
-  right: 0;
-}
-
-/* Стилизация ползунка для webkit и firefox */
-.range-slider::-webkit-slider-runnable-track,
-.range-slider::-moz-range-track {
-  -webkit-appearance: none;
-  appearance: none;
-  height: var(--range-height);
-  background: none;
-}
-
-/* Стилизация рычажка для webkit */
-.range-slider::-webkit-slider-thumb {
-  cursor: pointer;
-  pointer-events: all;
-  -webkit-appearance: none;
-  appearance: none;
-  width: var(--range-thumb-size);
-  height: var(--range-thumb-size);
-  border: none;
-  border-radius: var(--r-default);
-  background: var(--c-bg-default);
-}
-
-.range-slider:focus::-webkit-slider-thumb {
-  box-shadow: var(--outline-shadow);
-}
-
-/* Стилизация рычажка для firefox  */
-.range-slider::-moz-range-thumb {
-  cursor: pointer;
-  pointer-events: all;
-  -webkit-appearance: none;
-  appearance: none;
-  width: var(--range-thumb-size);
-  height: var(--range-thumb-size);
-  border: none;
-  border-radius: var(--r-default);
-  background: var(--c-bg-default);
-}
-
-.range-slider:focus::-moz-range-thumb {
-  box-shadow: var(--outline-shadow);
 }
 
 /* Действия в фильтре */
