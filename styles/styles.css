@@ -1,7 +1,5 @@
 /* Общие переменные */
 :root {
-  --c-default: #000;
-  --c-default-opacity-60: rgba(0, 0, 0, 0.3);
   --c-default-opacity-30: rgba(0, 0, 0, 0.3);
   --c-secondary: #333;
   --c-dark: #000;
@@ -125,7 +123,6 @@ body {
 /*
   Шапка
 */
-
 .header-box {
   position: relative;
   z-index: 1;
@@ -134,7 +131,6 @@ body {
 /* Разметка шапки */
 .header-layout {
   display: flex;
-  flex-wrap: wrap;
   gap: 45px;
 }
 
@@ -163,18 +159,20 @@ body {
 /* Навигация в шапке */
 .header-navigation {
   display: flex;
-  flex-wrap: wrap;
   justify-content: space-between;
   flex-grow: 1;
-  align-items: center;
+  align-items: flex-start;
   margin: auto;
 }
 
 /* Список навигации в шапке */
 .header-navigation-list {
   display: flex;
-  align-items: center;
+  flex-wrap: wrap;
   gap: 32px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 /* Ссылка навигации */
@@ -191,7 +189,7 @@ body {
   line-height: 24px;
   text-align: center;
   text-decoration: none;
-  color: var(--c-default);
+  color: #000;
 }
 
 .header-navigation-link:hover,
@@ -205,7 +203,7 @@ body {
 }
 
 /* Активная ссылка навигации */
-.header-navigation-link.is-current {
+.header-navigation-link-current {
   border-bottom-color: var(--c-btn-primary);
 }
 
@@ -218,7 +216,9 @@ body {
 
 /* Ссылка в навигации пользователя */
 .header-navigation-user {
+  flex-shrink: 0;
   gap: 0;
+  align-items: center;
 }
 
 .header-navigation-user .header-navigation-item:last-child {
@@ -236,135 +236,73 @@ body {
 */
 
 /* Заголовки */
-h1,
 .title-h1 {
   font-size: 60px;
   font-weight: 700;
-  color: var(--c-default);
+  color: #000;
   line-height: 78px;
 }
 
-h2,
 .title-h2 {
   font-size: 30px;
   font-weight: 700;
-  color: var(--c-default);
+  color: #000;
   line-height: 36px;
   text-transform: uppercase;
 }
 
-h3,
 .title-h3 {
   font-size: 24px;
   font-weight: 700;
-  color: var(--c-default);
+  color: #000;
   line-height: 28px;
 }
 
-h4,
 .title-h4 {
   font-size: 20px;
   font-weight: 700;
-  color: var(--c-default);
+  color: #000;
   line-height: 24px;
 }
 
-h5,
 .title-h5 {
   font-size: 18px;
   font-weight: 700;
-  color: var(--c-default);
+  color: #000;
   line-height: 22px;
 }
 
-h6,
 .title-h6 {
   font-size: 16px;
   font-weight: 700;
-  color: var(--c-default);
+  color: #000;
   line-height: 20px;
 }
 
 /* Ссылки */
-a {
+.link {
   outline: none;
   color: var(--c-link-default);
 }
 
-a:hover,
-a:focus {
+.link:hover,
+.link:focus {
   color: var(--c-link-default-hover);
 }
 
-a:active {
+.link:active {
   opacity: 0.3;
 }
 
-/* Текст */
-.text-small {
-  font-size: 16px;
-  line-height: 21px;
-}
-
-.text-light {
-  color: var(--c-light) !important;
-}
-
-.text-error {
-  color: var(--c-danger) !important;
-}
-
-.text-bold {
-  font-weight: bold !important;
-}
-
-.text-uppercase {
-  text-transform: uppercase !important;
-}
-
-/* Списки */
-.list-unstyled {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-/* Секции */
-.section-title,
-.section-description {
-  margin: 0;
-}
-
-.section-description {
-  font-size: 22px;
-  line-height: 26px;
-}
-
-/* Темная секция */
-.section-dark {
-  color: var(--c-light);
-}
-
-.section-dark .section-title,
-.section-dark .section-description {
-  color: currentColor;
-}
-
-/* Фон */
-.bg-default {
-  background-color: var(--c-bg-default) !important;
-}
-
-.bg-primary {
-  background-color: var(--c-bg-primary) !important;
-}
-
-.bg-secondary {
-  background-color: var(--c-bg-secondary) !important;
-}
-
-.bg-tertiary {
-  background-color: var(--c-bg-tertiary) !important;
+/* Звезда */
+.star {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  background-image: url("../images/icons/icon-star-secondary.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
 }
 
 /* Доступность */
@@ -389,6 +327,12 @@ a:active {
 .form-hint {
   display: inline-block;
   margin: 4px 0 0 20px;
+  font-size: 16px;
+  line-height: 21px;
+}
+
+.form-hint-error {
+  color: var(--c-danger);
 }
 
 .form-control {
@@ -414,7 +358,7 @@ a:active {
 }
 
 .form-control::placeholder {
-  color: var(--c-default-opacity-60);
+  color: rgba(0, 0, 0, 0.3);
 }
 
 /* Скрываем стандартные кнопки вверх/вниз в вебкит */
@@ -645,7 +589,7 @@ a:active {
   top: 50%;
   right: 20px;
   transform: translateY(-50%);
-  color: var(--c-default);
+  color: #000;
 }
 
 /* Оберстка для слайдера диапазона */
@@ -656,8 +600,8 @@ a:active {
   background: var(--c-bg-default-opacity-30);
 }
 
-/* Выбранный диапазон */
-.range-slider-block::before {
+/* Выбранный диапазон слайдера диапазона */
+.range-slider-progress {
   pointer-events: none;
   position: absolute;
   height: var(--range-height);
@@ -668,50 +612,14 @@ a:active {
   content: "";
 }
 
-/* Сдайдер диапазона */
-.range-slider {
-  pointer-events: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  position: absolute;
-  z-index: 0;
-  height: var(--range-height);
-  margin: 0;
-  background: none;
-  /* Убираем наложение ползунков друг на друга в начальной/конечной точке  */
-  width: calc(100% - var(--range-thumb-size));
-}
-
-.range-slider:focus {
+/* Рычажок слайдера диапазона */
+.range-slider-handle {
   outline: none;
-}
-
-/* Первый слайдер выравниваем по левой стороне */
-.range-slider:first-child {
-  left: 0;
-}
-
-/* Второй слайдер выравниваем по правой стороне */
-.range-slider:last-child {
-  right: 0;
-}
-
-/* Стилизация ползунка для webkit и firefox */
-.range-slider::-webkit-slider-runnable-track,
-.range-slider::-moz-range-track {
-  -webkit-appearance: none;
-  appearance: none;
-  height: var(--range-height);
-  background: none;
-}
-
-/* Стилизация рычажка для webkit */
-.range-slider::-webkit-slider-thumb {
   cursor: pointer;
-  pointer-events: all;
-  -webkit-appearance: none;
-  appearance: none;
+  position: absolute;
+  z-index: 9;
+  top: 50%;
+  transform: translateY(-50%);
   width: var(--range-thumb-size);
   height: var(--range-thumb-size);
   border: none;
@@ -719,35 +627,20 @@ a:active {
   background: var(--c-bg-default);
 }
 
-.range-slider:focus::-webkit-slider-thumb {
+.range-slider-handle:focus {
   box-shadow: var(--outline-shadow);
 }
 
-/* Стилизация рычажка для firefox  */
-.range-slider::-moz-range-thumb {
-  cursor: pointer;
-  pointer-events: all;
-  -webkit-appearance: none;
-  appearance: none;
-  width: var(--range-thumb-size);
-  height: var(--range-thumb-size);
-  border: none;
-  border-radius: var(--r-default);
-  background: var(--c-bg-default);
-}
-
-.range-slider:focus::-moz-range-thumb {
-  box-shadow: var(--outline-shadow);
+/* Рычажок увелечения слайдера диапазона */
+.range-slider-handle-decrease {
+  left: 72%;
 }
 
 /*
   Кнопки
 */
-button {
-  outline: none;
-}
-
 .button {
+  outline: none;
   box-sizing: border-box;
   outline: none;
   cursor: pointer;
@@ -1040,6 +933,8 @@ button {
   display: flex;
   flex-wrap: wrap;
   margin: 8px 0 0;
+  padding: 0;
+  list-style: none;
   font-size: 16px;
 }
 
@@ -1093,61 +988,9 @@ button {
   text-align: center;
 }
 
-/* Текстовая карточка */
-.card-tile {
-  box-sizing: border-box;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 30px;
-  padding: 80px 85px;
-  text-align: center;
-}
-
-/* Обнуление отступов по умолчанию для текста */
-.card-tile-thumbnail,
-.card-tile-title,
-.card-tile-description {
-  margin: 0;
-}
-
-.card-tile-thumbnail {
-  height: 74px;
-}
-
-/* Вписываем картинку в блок */
-.card-tile-media {
-  max-width: 100%;
-  max-height: 100%;
-}
-
-/* Текстовая карточка с подчеркиванием */
-.card-tile-stripe .card-tile-title {
-  position: relative;
-}
-
-/* Добавляем черточку */
-.card-tile-stripe .card-tile-title::after {
-  display: block;
-  max-width: 60px;
-  height: 2px;
-  margin: 30px auto 0;
-  background-color: var(--c-bg-tertiary);
-  content: "";
-}
-
-/* Изменяем цвет текста карточки, если карточка темная */
-.card-tile-stripe.bg-primary .card-tile-title {
-  color: var(--c-light);
-}
-
-.card-tile-stripe.bg-primary .card-tile-title::after {
-  background-color: var(--c-light-opacity-30);
-}
-
 /* Первый экран на главной */
-.main-index-container {
+.section-intro {
+  height: 485px;
   background-color: #d6e8f2;
   background-image: url("../images/decor.svg"),
     url("../images/background-1-screen.jpg");
@@ -1155,8 +998,8 @@ button {
   background-size: 100% auto;
   background-position: bottom center, center;
   text-align: center;
-  height: 485px;
 }
+
 .welcome {
   margin-top: 51px;
 }
@@ -1164,13 +1007,12 @@ button {
 /*
   Преимущества
 */
-
-/* Выравнивание текста */
 .section-advantages {
   text-align: center;
 }
 
-.section-advantages .section-header {
+/* Шапка преимуществ */
+.section-advantages-header {
   display: flex;
   flex-direction: column;
   gap: 26px;
@@ -1178,16 +1020,40 @@ button {
   margin: 68px auto 88px;
 }
 
+/* Обнуление отступов у заголовка и описания преимуществ */
+.section-advantages-title,
+.section-advantages-description {
+  margin: 0;
+}
+
+/* Типографика для описания преимуществ */
+.section-advantages-description {
+  font-size: 22px;
+  line-height: 26px;
+}
+
 /* Сетка преимущества */
 .advantages-list {
   display: grid;
   /* Задаем 3 колонки равной ширины */
   grid-template-columns: repeat(3, 1fr);
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
+/* Элемент сетки преимуществ */
 .advantages-item {
   position: relative;
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 30px;
   min-height: 385px;
+  padding: 80px 85px;
+  text-align: center;
 }
 
 .advantages-item.column-by-2 {
@@ -1195,12 +1061,9 @@ button {
   grid-column: span 2;
 }
 
-/* Растянутое изображение */
-.advantages-item-picture {
-  position: relative;
-  display: block;
-  width: 100%;
-  height: 100%;
+/* Элемент преимуществ с изображением */
+.advantages-item-frame {
+  padding: 0;
 }
 
 /* Вписываем изображение в выделенное место */
@@ -1214,17 +1077,61 @@ button {
   object-position: center;
 }
 
+/* Заголовок элемента преимуществ */
+.advantages-item-title {
+  position: relative;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+/* Добавляем черточку после заголовка элемента преимуществ */
+.advantages-item-title::after {
+  display: block;
+  max-width: 60px;
+  height: 2px;
+  margin: 30px auto 0;
+  background-color: var(--c-bg-tertiary);
+  content: "";
+}
+
+/* Обнуляем отступы у описания элемента преимуществ */
+.advantages-item-description {
+  margin: 0;
+}
+
+/* Синий элемент преимуществ */
+.advantages-item-primary {
+  background-color: var(--c-bg-primary);
+  color: var(--c-light);
+}
+
+.advantages-item-primary .advantages-item-title {
+  color: currentColor;
+}
+
+.advantages-item-primary .advantages-item-title::after {
+  background-color: var(--c-light-opacity-30);
+}
+
+/* Голубой элемент преимуществ */
+.advantages-item-secondary {
+  background-color: var(--c-bg-secondary);
+}
+
+/* Светло голубой элемент преимуществ */
+.advantages-item-tertiary {
+  background-color: var(--c-bg-tertiary);
+}
+
 /*
   Рекомендации
 */
-
-/* Выравнивание текста */
 .section-recommendations {
   text-align: center;
 }
 
 /* Шапка рекомендаций */
-.section-recommendations .section-header {
+.section-recommendations-header {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -1232,15 +1139,81 @@ button {
   margin: 64px auto;
 }
 
+/* Обнуление отступов у заголовка и описания рекомендаций */
+.section-recommendations-title,
+.section-recommendations-description {
+  margin: 0;
+}
+
+/* Типографика для описания рекомендаций */
+.section-recommendations-description {
+  font-size: 22px;
+  line-height: 26px;
+}
+
 /* Сетка рекомендаций */
 .recommendations-list {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
-/* Меняем цвет каждому второму элементу в сетке рекомендаций */
-.recommendations-item:nth-child(2n + 1) {
+/* Голубой элемент рекомендаций */
+.recommendations-list .recommendations-item:nth-child(2n + 1) {
+  background-color: var(--c-bg-tertiary);
+}
+
+/* Светло голубой элемент рекомендаций */
+.recommendations-list .recommendations-item:nth-child(2n + 2) {
   background-color: var(--c-bg-secondary);
+}
+
+/* Элемент рекомендаций */
+.recommendations-item {
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 30px;
+  padding: 80px 85px;
+  text-align: center;
+}
+
+/* Резервируем место под изображение в элементе рекомендаций */
+.recommendations-item-image {
+  height: 74px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+/* Изображение дома в элементе рекомендаций */
+.recommendations-item-image-house {
+  background-image: url("../images/recommendations/icon-house.svg");
+}
+
+/* Изображение еды в элементе рекомендаций */
+.recommendations-item-image-food {
+  background-image: url("../images/recommendations/icon-food.svg");
+}
+
+/* Изображение сувенира в элементе рекомендаций */
+.recommendations-item-image-souvenir {
+  background-image: url("../images/recommendations/icon-souvenir.svg");
+}
+
+/* Заголовок в элементе рекомендаций */
+.recommendations-item-title {
+  margin: 0;
+  text-transform: uppercase;
+}
+
+/* Описание в элементе рекомендаций */
+.recommendations-item-description {
+  margin: 0;
 }
 
 /*
@@ -1259,12 +1232,24 @@ button {
 }
 
 /* Шапка поиска отелей */
-.section-hotel-search .section-header {
+.section-hotel-search-header {
   display: flex;
   flex-direction: column;
   gap: 20px;
   max-width: 600px;
   margin: 0 auto 54px;
+}
+
+/* Обнуление отступов у заголовка и описания поиска отелей */
+.section-hotel-search-title,
+.section-hotel-search-description {
+  margin: 0;
+}
+
+/* Типографика для описания поиска отелей */
+.section-hotel-search-description {
+  font-size: 22px;
+  line-height: 26px;
 }
 
 /*
@@ -1283,16 +1268,35 @@ button {
   text-align: center;
 }
 
-.section-mailing-with-background {
-  background-image: url("../images/background-mailing.jpg");
-}
-
 /* Шапка поиска отелей */
-.section-mailing .section-header {
+.section-mailing-header {
   display: flex;
   flex-direction: column;
   gap: 20px;
   max-width: 500px;
+}
+
+/* Обнуление отступов у заголовка и описания в секции подписки на рассылку */
+.section-mailing-title,
+.section-mailing-description {
+  margin: 0;
+}
+
+/* Типографика для описания преимуществ */
+.section-mailing-description {
+  font-size: 22px;
+  line-height: 26px;
+}
+
+/* Альтернативный вид секции подписка на рассылку с фоновой картинкой */
+.section-mailing-with-background {
+  background-color: var(--c-bg-primary);
+  background-image: url("../images/background-mailing.jpg");
+  color: var(--c-light);
+}
+
+.section-mailing-with-background .section-mailing-title {
+  color: currentColor;
 }
 
 /* Форма поиска отелей */
@@ -1314,13 +1318,20 @@ button {
 */
 .section-catalog-intro {
   padding: 35px 0 72px;
+  background-color: var(--c-bg-primary);
   background-image: url("../images/catalog-filter.jpg");
   background-repeat: no-repeat;
   background-size: cover;
+  color: var(--c-light);
 }
 
-.section-catalog-intro .section-header {
+.section-catalog-intro-header {
   margin-bottom: 40px;
+}
+
+.section-catalog-intro-title {
+  margin: 0;
+  color: currentColor;
 }
 
 /*
@@ -1357,6 +1368,9 @@ button {
   display: flex;
   flex-direction: column;
   gap: 18px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 /* Элемент в списке опций фильтра */
@@ -1376,6 +1390,8 @@ button {
   min-width: 150px;
   gap: 30px;
   margin: 55px 0 0;
+  padding: 0;
+  list-style: none;
 }
 
 /* Кнопка действия в фильтре */
@@ -1410,9 +1426,13 @@ button {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 .catalog-view-button {
+  outline: none;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -1423,7 +1443,7 @@ button {
   border: 2px solid var(--c-btn-outline);
   border-radius: var(--r-default);
   background-color: transparent;
-  color: var(--c-default);
+  color: #000;
 }
 
 .catalog-view-button:hover,
@@ -1449,6 +1469,9 @@ button {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 /* Одинаковая высота ячеек товаров */
@@ -1521,6 +1544,14 @@ button {
   gap: 16px;
 }
 
+/* Обнуление списков для инфо и действий */
+.card-product-summary,
+.card-product-actions {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
 /*
   Каждый второй элемент инфо в карточке отеля
   выровнен по правой стороне
@@ -1547,6 +1578,9 @@ button {
   flex-wrap: wrap;
   column-gap: 6px;
   align-self: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 /* Рейтинг в карточке отеля */
@@ -1566,9 +1600,10 @@ button {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-top: 40px;
-  padding-top: 40px;
+  margin: 40px 0 0;
+  padding: 40px 0 0;
   border-top: 1px solid var(--c-border-default);
+  list-style: none;
 }
 
 /* Общие стили для элемента и ссылки пагинации */
@@ -1594,9 +1629,9 @@ button {
 }
 
 /* Выбранная ссылка пагинации */
-.pagination-link.pagination-current {
+.pagination-link.pagination-link-current {
   background-color: var(--c-btn-light);
-  color: var(--c-default);
+  color: #000;
 }
 
 /*
@@ -1617,6 +1652,10 @@ button {
 .footer-social-list {
   display: flex;
   flex-wrap: wrap;
+  max-width: 150px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 /* Ссылка соц сетей*/
@@ -1667,7 +1706,7 @@ button {
 }
 
 /* Открытое модальное окно */
-.modal.is-open {
+.modal.modal-open {
   display: flex;
 }
 
