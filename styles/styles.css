@@ -1442,7 +1442,9 @@ button {
   flex-direction: column;
 }
 
-/* Карточки */
+/*
+  Карточки отелей
+*/
 .card-product {
   display: flex;
   flex-direction: column;
@@ -1453,12 +1455,14 @@ button {
   border-radius: var(--r-default);
 }
 
+/* Резервируем место для изображения отеля */
 .card-product-thumbnail {
   position: relative;
   margin: 0;
   padding: 70.5% 0 0;
 }
 
+/* Растягиваем ссылку изображения отеля на всю ширину/высоту */
 .card-product-thumbnail .card-product-link {
   position: absolute;
   top: 0;
@@ -1471,6 +1475,7 @@ button {
   opacity: 0.9;
 }
 
+/* Вписываем изображение отеля в выделенную область */
 .card-product-media {
   position: absolute;
   top: 0;
@@ -1481,15 +1486,18 @@ button {
   object-position: center;
 }
 
+/* Заголовок в карточке отеля */
 .card-product-title {
   margin: 0;
 }
 
+/* Ссылка в карточке отеля */
 .card-product-link {
   color: currentColor;
   text-decoration: none;
 }
 
+/* Общие стили для инфо, действий и рейтинга в карточке отеля */
 .card-product-summary,
 .card-product-actions,
 .card-product-rating {
@@ -1498,24 +1506,27 @@ button {
   gap: 16px;
 }
 
-/* Каждый второй элемент свойства выровнен по правой стороне */
+/*
+  Каждый второй элемент инфо в карточке отеля
+  выровнен по правой стороне
+*/
 .card-product-summary > li:nth-child(2n + 2) {
   text-align: right;
 }
 
-/* Выравнивания действия по нижнему краю карточки */
+/* Выравнивание действий по нижнему краю карточке отеля */
 .card-product-actions {
   margin-top: auto;
 }
 
-/* Кнопка действия */
+/* Кнопка действия в карточке отеля */
 .card-product-action {
   width: 100%;
   padding-left: 15px;
   padding-right: 15px;
 }
 
-/* Звезды */
+/* Звезды в карточке отеля */
 .card-product-stars {
   display: flex;
   flex-wrap: wrap;
@@ -1523,7 +1534,7 @@ button {
   align-self: center;
 }
 
-/* Рейтинг */
+/* Рейтинг в карточке отеля */
 .card-product-rate {
   padding: 8px 5px;
   border-radius: var(--r-default);
@@ -1545,6 +1556,7 @@ button {
   border-top: 1px solid var(--c-border-default);
 }
 
+/* Общие стили для элемента и ссылки пагинации */
 .pagination-item,
 .pagination-link {
   box-sizing: border-box;
@@ -1557,6 +1569,7 @@ button {
   line-height: 36px;
 }
 
+/* Ссылка пагинации */
 .pagination-link {
   display: inline-flex;
   align-items: center;
@@ -1565,14 +1578,15 @@ button {
   padding: 5px;
 }
 
+/* Выбранная ссылка пагинации */
 .pagination-link.pagination-current {
   background-color: var(--c-btn-light);
   color: var(--c-default);
 }
 
 /*
- * Футер
- */
+  Футер
+*/
 .footer-box {
   padding: 48px 0 34px;
 }
@@ -1590,6 +1604,7 @@ button {
   flex-wrap: wrap;
 }
 
+/* Ссылка соц сетей*/
 .footer-social-link {
   display: inline-block;
   height: 40px;
@@ -1620,7 +1635,6 @@ button {
 /*
   Модальное окно
 */
-
 .modal {
   box-sizing: border-box;
   position: fixed;
@@ -1637,10 +1651,12 @@ button {
   -webkit-overflow-scrolling: touch; /* плавый скроллинг на ios */
 }
 
+/* Открытое модальное окно */
 .modal.is-open {
   display: flex;
 }
 
+/* Обертка для контента в модальном окне */
 .modal-dialog {
   box-sizing: border-box;
   width: 100%;
@@ -1652,52 +1668,65 @@ button {
   box-shadow: 0px 25px 50px 0px rgba(0, 0, 0, 0.15);
 }
 
+/* Шапка модального окна */
 .modal-header {
   position: relative;
   margin: 0 0 64px;
   padding: 0 60px 0 0;
 }
 
+/* Кнопка закрытия в модальном окне */
 .modal-header .button-close {
   position: absolute;
   top: 0;
   right: -18px;
 }
 
+/* Заголовок модального окна */
 .modal-title {
   margin: 0;
 }
 
+/* Форма резервирования */
 .form-reservation {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 24px;
 }
 
+/* Кнопка отправить в форме резервирования */
 .form-reservation button[type="submit"] {
   margin-top: 22px;
 }
 
+/* Группа в форме резервирования */
 .form-reservation .form-group {
   display: flex;
 }
 
+/* Дата заезда, выезда, кнопка отправить по ширине в 2 колонки */
+.form-reservation .form-group-arrival,
+.form-reservation .form-group-departure,
+.form-reservation button[type="submit"] {
+  grid-column: span 2;
+}
+
+/* Выравнивание группы "дети" по правой стороне в форме резервировния */
 .form-reservation .form-group-children {
   justify-content: flex-end;
 }
 
+/* Группа с ошибкой/подсказкой в форме резервирования */
 .form-reservation .form-group-with-hint {
   min-height: 73px;
 }
 
-.form-reservation .form-column {
-  flex-grow: 1;
-}
-
+/* Колонка с лейблом в форме резервирования */
 .form-reservation .form-label-column {
   flex: 0 0 136px;
 }
 
+/* Лейбл в форме резервирования */
 .form-reservation .form-label-column .form-label {
   display: inline-flex;
   align-items: center;
@@ -1706,14 +1735,13 @@ button {
   vertical-align: super;
 }
 
+/* Колонка с текстовым полем на всю ширину в форме резервирования */
+.form-reservation .form-column {
+  flex-grow: 1;
+}
+
+/* Текстовое поле на всю ширину в форме резервирования */
 .form-reservation .form-control {
   flex-grow: 1;
   width: 100%;
-}
-
-/* Дата заезда, выезда, кнопка отправить по ширине в 2 колонки */
-.form-reservation .form-group-arrival,
-.form-reservation .form-group-departure,
-.form-reservation button[type="submit"] {
-  grid-column: span 2;
 }
