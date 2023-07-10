@@ -4,6 +4,7 @@
   --c-default-opacity-60: rgba(0, 0, 0, 0.3);
   --c-default-opacity-30: rgba(0, 0, 0, 0.3);
   --c-secondary: #333;
+  --c-dark: #000;
   --c-light: #fff;
   --c-light-opacity-30: rgba(255, 255, 255, 0.3);
   --c-danger: #ff5757;
@@ -13,7 +14,6 @@
   /* Ссылка */
   --c-link-default: #000000;
   --c-link-default-hover: #756157;
-  --c-link-light: #fff;
 
   /* Кнопки */
   --c-btn-primary: #756157;
@@ -33,8 +33,9 @@
   --c-btn-outline-focus: #68a2ca;
 
   --c-btn-light: #f2f2f2;
+  --c-btn-dark: #000;
 
-  --c-btn-close: #e5e5e5;
+  --c-btn-close: #f2f2f2;
   --c-btn-close-hover: #e6e6e6;
 
   --c-btn-disabled: #e5e5e5;
@@ -60,12 +61,13 @@
   --c-form-secondary: #e5e5e5;
   --c-border-default: #e6e6e6;
 
+  /* Рендж слайдер */
   --range-height: 4px;
   --range-thumb-size: 20px;
   --range-left-offset: 0;
   --range-right-offset: 23.5%;
 
-  /* Радиус */
+  /* Радиус элементов */
   --r-default: 4px;
   --r-large: 10px;
   --r-badge: 50px;
@@ -104,7 +106,7 @@ body {
   font-family: "PT Sans", Arial, sans-serif;
   font-size: 18px;
   line-height: 21px;
-  color: #333333;
+  color: var(--c-secondary);
 }
 
 /* Растяжение основной части/липкий футер */
@@ -129,6 +131,7 @@ h1,
 .title-h1 {
   font-size: 60px;
   font-weight: 700;
+  color: var(--c-default);
   line-height: 78px;
 }
 
@@ -136,6 +139,7 @@ h2,
 .title-h2 {
   font-size: 30px;
   font-weight: 700;
+  color: var(--c-default);
   line-height: 36px;
   text-transform: uppercase;
 }
@@ -144,6 +148,7 @@ h3,
 .title-h3 {
   font-size: 24px;
   font-weight: 700;
+  color: var(--c-default);
   line-height: 28px;
 }
 
@@ -151,6 +156,7 @@ h4,
 .title-h4 {
   font-size: 20px;
   font-weight: 700;
+  color: var(--c-default);
   line-height: 24px;
 }
 
@@ -158,6 +164,7 @@ h5,
 .title-h5 {
   font-size: 18px;
   font-weight: 700;
+  color: var(--c-default);
   line-height: 22px;
 }
 
@@ -165,33 +172,22 @@ h6,
 .title-h6 {
   font-size: 16px;
   font-weight: 700;
+  color: var(--c-default);
   line-height: 20px;
 }
 
 /* Ссылки */
-a:not(.button) {
+a {
   outline: none;
   color: var(--c-link-default);
 }
 
-a:not(.button):hover,
-a:not(.button):focus {
+a:hover,
+a:focus {
   color: var(--c-link-default-hover);
 }
 
-a:not(.button):active {
-  opacity: 0.3;
-}
-
-.link-light,
-.link-light:focus {
-  color: var(--c-link-light);
-}
-
-.link-light:hover {
-  opacity: 0.6;
-}
-.link-light:active {
+a:active {
   opacity: 0.3;
 }
 
@@ -233,6 +229,16 @@ a:not(.button):active {
 .section-description {
   font-size: 22px;
   line-height: 26px;
+}
+
+/* Темная секция */
+.section-dark {
+  color: var(--c-light);
+}
+
+.section-dark .section-title,
+.section-dark .section-description {
+  color: currentColor;
 }
 
 /* Фон */
@@ -300,6 +306,15 @@ a:not(.button):active {
   color: var(--c-default-opacity-60);
 }
 
+/* Поле с календарем */
+.form-control-date {
+  padding-right: 60px;
+  background-image: url("../images/icons/icon-calendar-dark-30.svg");
+  background-repeat: no-repeat;
+  background-position: calc(100% - 20px) center;
+  background-size: 20px;
+}
+
 /* Скрываем стандартные кнопки вверх/вниз */
 .form-control::-webkit-outer-spin-button,
 .form-control::-webkit-inner-spin-button {
@@ -362,7 +377,7 @@ a:not(.button):active {
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: url("../images/icons/icon-check.svg");
+  background-image: url("../images/icons/icon-check-primary.svg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -454,6 +469,7 @@ a:not(.button):active {
   padding: 0 40px 0 20px;
   border: 2px solid var(--c-form-secondary);
   border-radius: var(--r-default);
+  background-color: transparent;
   background-image: url("../images/icons/icon-arrow-down.svg");
   background-repeat: no-repeat;
   background-position: calc(100% - 14px) center;
@@ -469,6 +485,9 @@ a:not(.button):active {
 }
 
 .form-select-input:disabled {
+  opacity: 0.3;
+  border: 2px solid var(--c-dark);
+  color: var(--c-dark);
 }
 
 /* Кнопки */
@@ -498,9 +517,11 @@ button {
 .button:hover,
 .button:focus {
   background-color: var(--c-btn-primary-hover);
+  color: var(--c-light);
 }
 
 .button:active {
+  opacity: 1;
   background-color: var(--c-btn-primary-press);
   color: var(--c-light-opacity-30);
 }
@@ -513,6 +534,7 @@ button {
   color: var(--c-light);
 }
 
+/* Второстипенный вид кнопки */
 .button-secondary {
   background-color: var(--c-btn-secondary);
   color: var(--c-light);
@@ -540,6 +562,7 @@ button {
   background-color: var(--c-btn-selected-press);
 }
 
+/* Прозрачная кнопка */
 .button-transparent,
 .button-transparent:hover,
 .button-transparent:focus,
@@ -566,6 +589,7 @@ button {
   opacity: 0.1;
 }
 
+/* Большая кнопка */
 .button-large {
   padding-left: 50px;
   padding-right: 50px;
@@ -574,14 +598,16 @@ button {
   text-transform: uppercase;
 }
 
+/* Экстра большая кнопка */
 .button-extra-large {
-  padding: 10px 50px;
+  padding: 12px 50px;
   border-radius: var(--r-large);
   font-size: 20px;
   line-height: 36px;
   text-transform: uppercase;
 }
 
+/* Кнопка закрытия */
 .button-close {
   cursor: pointer;
   display: flex;
@@ -608,6 +634,7 @@ button {
   color: var(--c-default-opacity-30);
 }
 
+/* Подсказка */
 .button-tooltip {
   cursor: pointer;
   position: relative;
@@ -666,29 +693,6 @@ button {
   visibility: visible;
 }
 
-/* Иконки */
-.icon-default {
-  color: var(--c-icon-default);
-}
-
-.icon-default:hover,
-.icon-default:focus {
-  color: var(--c-icon-default-hover);
-}
-
-.icon-secondary {
-  color: var(--c-icon-secondary);
-}
-
-.icon-secondary:hover,
-.icon-secondary:focus {
-  color: var(--c-icon-secondary-hover);
-}
-
-.icon-tertiary {
-  color: var(--c-icon-tertiary);
-}
-
 /* Счетчик */
 .counter {
   position: relative;
@@ -697,14 +701,17 @@ button {
 }
 
 .counter-control {
+  padding-left: 40px;
+  padding-right: 40px;
   text-align: center;
 }
 
 .counter-button {
+  opacity: 0.3;
   cursor: pointer;
   position: absolute;
   top: 0;
-  width: 30px;
+  width: 40px;
   height: 100%;
   padding: 0;
   border: none;
@@ -713,16 +720,47 @@ button {
   background-repeat: no-repeat;
   background-position: center;
   background-size: 20px;
+  color: var(--c-btn-primary);
+}
+
+.counter-button:hover,
+.counter-button:focus {
+  opacity: 1;
+  color: var(--c-btn-dark);
+}
+
+.counter-button:focus:active {
+  opacity: 0.3;
+  color: var(--c-btn-primary);
+}
+
+.counter-button::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 20px;
+  height: 20px;
+  margin: auto;
+  border-radius: var(--r-default);
+  content: "";
+}
+
+.counter-button:focus::before {
+  box-shadow: var(--outline-shadow);
+}
+
+.counter-button:focus:active::before {
+  box-shadow: none;
 }
 
 .counter-button-decrease {
   left: 0;
-  background-image: url("../images/icons/icon-minus.svg");
 }
 
 .counter-button-increase {
   right: 0;
-  background-image: url("../images/icons/icon-plus.svg");
 }
 
 /*
@@ -846,7 +884,11 @@ button {
   content: "";
 }
 
-/* Изменяем цвет черточки, если карточка темная */
+/* Изменяем цвет текста карточки, если карточка темная */
+.card-tile-stripe.bg-primary .card-tile-title {
+  color: var(--c-light);
+}
+
 .card-tile-stripe.bg-primary .card-tile-title::after {
   background-color: var(--c-light-opacity-30);
 }
@@ -1138,6 +1180,7 @@ button {
 .filter-title {
   margin: 0 0 32px;
   padding: 0;
+  color: currentColor;
   text-transform: capitalize;
 }
 
@@ -1559,12 +1602,14 @@ button {
   padding: 48px 0 34px;
 }
 
+/* Разметка футера */
 .footer-layout {
   display: flex;
   justify-content: space-between;
   gap: 70px;
 }
 
+/* Соц сети */
 .footer-social-list {
   display: flex;
   flex-wrap: wrap;
@@ -1574,18 +1619,27 @@ button {
   display: inline-block;
   height: 40px;
   padding: 0 13px;
+  color: var(--c-icon-secondary);
   line-height: 40px;
 }
 
+.footer-social-link:hover,
+.footer-social-link:focus {
+  color: var(--c-icon-secondary-hover);
+}
+
+.footer-social-link:active {
+  opacity: 0.3;
+  color: var(--c-icon-secondary-hover);
+}
+
+/* Номер телефона */
 .footer-contact-phone {
   font-size: 40px;
   line-height: 40px;
   text-transform: uppercase;
   text-decoration: none;
   color: #000000;
-}
-
-.footer-development-link {
 }
 
 /*
@@ -1599,13 +1653,17 @@ button {
   overflow-y: auto;
   top: 0;
   left: 0;
-  display: flex;
+  display: none;
   flex-direction: column;
   width: 100%;
   height: 100%;
   padding: 15px;
   background-color: rgba(242, 242, 242, 0.8);
   -webkit-overflow-scrolling: touch; /* плавый скроллинг на ios */
+}
+
+.modal.is-open {
+  display: flex;
 }
 
 .modal-dialog {
