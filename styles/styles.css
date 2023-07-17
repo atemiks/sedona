@@ -1424,13 +1424,18 @@ body {
   Карточки отелей
 */
 .card-product {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: flex-start;
   gap: 16px;
   padding: 20px;
   border: 1px solid #e6e6e6;
   border-radius: 4px;
+}
+
+/* Обнуление отступов браузера для параграфов */
+.card-product p {
+  margin: 0;
 }
 
 /* Резервируем место для изображения отеля */
@@ -1438,6 +1443,7 @@ body {
   position: relative;
   margin: 0;
   padding: 70.5% 0 0;
+  grid-column: span 2;
 }
 
 /* Растягиваем ссылку изображения отеля на всю ширину/высоту */
@@ -1466,6 +1472,7 @@ body {
 
 /* Заголовок в карточке отеля */
 .card-product-title {
+  grid-column: span 2;
   margin: 0;
 }
 
@@ -1475,34 +1482,9 @@ body {
   text-decoration: none;
 }
 
-/* Общие стили для инфо, действий и рейтинга в карточке отеля */
-.card-product-summary,
-.card-product-actions,
-.card-product-rating {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
-}
-
-/* Обнуление списков для инфо и действий */
-.card-product-summary,
-.card-product-actions {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-/*
-  Каждый второй элемент инфо в карточке отеля
-  выровнен по правой стороне
-*/
-.card-product-summary > li:nth-child(2n + 2) {
+/* Стоимость проживания в карточке отеля */
+.card-product-price {
   text-align: right;
-}
-
-/* Выравнивание действий по нижнему краю карточке отеля */
-.card-product-actions {
-  margin-top: auto;
 }
 
 /* Кнопка действия в карточке отеля */
