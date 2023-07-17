@@ -248,17 +248,6 @@ body {
   opacity: 0.3;
 }
 
-/* Звезда */
-.star {
-  display: inline-block;
-  width: 18px;
-  height: 18px;
-  background-image: url("../images/icons/icon-star-secondary.svg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-}
-
 /* Доступность */
 .visually-hidden {
   position: absolute;
@@ -1525,13 +1514,36 @@ body {
 
 /* Звезды в карточке отеля */
 .card-product-stars {
-  display: flex;
-  flex-wrap: wrap;
-  column-gap: 6px;
   align-self: center;
+  width: 18px;
+  height: 18px;
   margin: 0;
   padding: 0;
+  background-repeat: space;
+  background-position: center;
+  background-size: contain;
+  background-image: url("../images/icons/icon-star-secondary.svg");
   list-style: none;
+}
+
+/* 2х звездочный отель */
+.card-product-stars-2 {
+  width: 42px;
+}
+
+/* 3х звездочный отель */
+.card-product-stars-3 {
+  width: 65px;
+}
+
+/* 4х звездочный отель */
+.card-product-stars-4 {
+  width: 90px;
+}
+
+/* 5и звездочный отель */
+.card-product-stars-5 {
+  width: 112px;
 }
 
 /* Рейтинг в карточке отеля */
